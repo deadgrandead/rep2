@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Исследование Космоса</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+</head>
+<body>
+  <div id="button-container">
+    <button id="windowBtn">Window</button>
+    <button id="navigatorBtn">Navigator</button>
+    <button id="locationBtn">Location</button>
+    <button id="screenBtn">Screen</button>
+  </div>
+  <div class="text">
+    <main>
+      <h1>Исследование космоса</h1>
+      <p id="firstParagraph" 
+      onmouseover="this.style.color='red';this.style.fontFamily='Arial';"
+      onmouseout="this.style.color='';this.style.fontFamily='';" class="news"><span class="date">
+        Галактики, звезды, планеты… А что вы представляете себе, слыша слово «космос»? Не задумывались ли вы о том, что где-то во вселенной существуют миры, населенный разумной жизнью? 
+        Середина прошлого века – время космической гонки. СССР стал победителем в этом негласном соревновании, в 1957 году запустив первый спутник, а затем отправив в неизвестность живое существо.
+      </p>
+      <p id="secondParagraph" 
+      onmouseover="changeMarginAndIndent(this)"
+      onmouseout="resetMarginAndIndent(this)" class="news"><span class="date">
+        Станция Луна-2, собачки Белка и Стрелка, и, наконец, человек: каждый год в космической истории нашей страны был наполнен великими событиями. 
+        А вот международная станция посетила космос лишь в 1998-м..
+      </p>
+      
+      <h2>Хронология исследования космоса</h2>
+      <p>12.04.1961 - </span>Первый полет человека в космос
+      </p>
+      <p>20.07.1969 - </span>Посадка на Луну
+      </p>
+      <p class="news"><span class="date">15.07.1975 - </span>Первый международный космический полет</p>
+      <table>
+        <tr>
+          <td class="cellStyle1" 
+              onmouseover="changeToAltStyle(this)" 
+              onmouseout="changeToOriginalStyle(this)">Ячейка 1</td>
+          <td class="cellStyle2" 
+              onmouseover="changeToAltStyle(this)" 
+              onmouseout="changeToOriginalStyle(this)">Ячейка 2</td>
+          <td class="cellStyle1" 
+              onmouseover="changeToAltStyle(this)" 
+              onmouseout="changeToOriginalStyle(this)">Ячейка 3</td>
+          <td class="cellStyle1" 
+              onmouseover="changeToAltStyle(this)" 
+              onmouseout="changeToOriginalStyle(this)">Ячейка 4</td>
+          <td class="cellStyle2" 
+              onmouseover="changeToAltStyle(this)" 
+              onmouseout="changeToOriginalStyle(this)">Ячейка 5</td>
+        </tr>
+        <!-- Другие строки и ячейки -->
+      </table>
+
+      <button onclick="hideMiddleLayer()">Скрыть средний слой</button>
+      <button onclick="showMiddleLayer()">Показать средний слой</button>
+      <button onclick="swapTopAndBottom()">Поменять местами верхний и нижний слои</button>
+
+      <div class="image-container">
+        <img src="pics/Image1.jpg" alt="Image 1" class="image1" name="image1" id="image1">
+        <img src="pics/Image2.jpg" alt="Image 2" class="image2" name="image2" id="image2">
+        <img src="pics/Image3.jpg" alt="Image 3" class="image3" name="image3" id="image3">
+      </div>
+    </main>
+  </div>
+  <!-- СКРИПТ -->
+  <script>
+    // Модификация
+    window.onload = function() {
+      alert("Последняя модификация этого документа: " + document.lastModified);
+    };
+
+    // Обработчик для navigatorBtn
+    document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("navigatorBtn").addEventListener("click", function() {
+      let info = "Тип браузера: " + navigator.appCodeName + "\n";
+      info += "Название браузера: " + navigator.appName + "\n";
+      info += "Версия: " + navigator.appVersion + "\n";
+      info += "Платформа: " + navigator.platform + "\n";
+      info += "Онлайн: " + navigator.onLine + "\n";
+      // Добавьте другие свойства navigator объекта, если нужно
+      alert(info);
+    });
+
+    // Обработчик для locationBtn
+    document.getElementById("locationBtn").addEventListener("click", function() {
+      let info = "Имя пользователя: " + navigator.userAgent + "\n";
+      info += "URL документа: " + location.href + "\n";
+      info += "Протокол: " + location.protocol + "\n";
+      info += "Хост: " + location.host + "\n";
+      info += "Путь: " + location.pathname + "\n";
+      // Добавьте другие свойства location объекта, если нужно
+      alert(info);
+    });
+
+    // Обработчик для screenBtn
+    document.getElementById("screenBtn").addEventListener("click", function() {
+      let info = "Ширина экрана: " + screen.width + "\n";
+      info += "Высота экрана: " + screen.height + "\n";
+      info += "Рабочая область (ширина): " + screen.availWidth + "\n";
+      info += "Рабочая область (высота): " + screen.availHeight + "\n";
+      info += "Глубина цвета: " + screen.colorDepth + "\n";
+      // Добавьте другие свойства объекта screen, если нужно
+  
+      if (confirm(info)) {
+        // Если нажата кнопка "Ок", выводим информацию в окно браузера
+        alert("Вы нажали 'Ок'. Повторяю информацию: \n" + info);
+      }
+    });
+  });
+  // Работа с параграфами
+  function changeMarginAndIndent(element) {
+    element.style.marginRight = '3cm';
+    element.style.textIndent = '2.5cm';
+  }
+  function resetMarginAndIndent(element) {
+    element.style.marginRight = '';
+    element.style.textIndent = '';
+  }
+  // Задание с таблицей
+  function changeToAltStyle(element) {
+    if (element.className === "cellStyle1") {
+      element.className = "cellStyle1-alt";
+    } else if (element.className === "cellStyle2") {
+      element.className = "cellStyle2-alt";
+    }
+  }
+  function changeToOriginalStyle(element) {
+    if (element.className === "cellStyle1-alt") {
+      element.className = "cellStyle1";
+    } else if (element.className === "cellStyle2-alt") {
+      element.className = "cellStyle2";
+    }
+  }
+  //Картинки
+  function hideMiddleLayer() {
+    document.getElementById("image2").style.opacity = "0";
+  }
+  function showMiddleLayer() {
+    document.getElementById("image2").style.opacity = "1";
+  }
+  function swapTopAndBottom() {
+    const img1 = document.getElementById("image1");
+    const img3 = document.getElementById("image3");
+  
+    const zIndex1 = window.getComputedStyle(img1).getPropertyValue("z-index");
+    const zIndex3 = window.getComputedStyle(img3).getPropertyValue("z-index");
+  
+    img1.style.zIndex = zIndex3;
+    img3.style.zIndex = zIndex1;
+  }
+  </script>
+</body>
+</html>
